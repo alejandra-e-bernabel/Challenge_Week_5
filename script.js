@@ -65,6 +65,24 @@ function setPast (hourIndex) {
 
   }
 
-
 }
 
+function setPresent (hourIndex) {
+  if ($(blockElements[hourIndex]).hasClass("present") == false) {
+
+    $(blockElements[hourIndex]).addClass ("present");
+    $(blockElements[hourIndex]).removeClass("past");
+    $(blockElements[hourIndex]).removeClass("future");
+
+  }
+}
+
+function setFuture (hourIndex) {
+  if ($(blockElements[hourIndex]).hasClass("future") == false) {
+
+    $(blockElements[hourIndex]).addClass ("future");
+    $(blockElements[hourIndex]).removeClass("past");
+    $(blockElements[hourIndex]).removeClass("present");
+
+  }
+}
