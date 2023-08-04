@@ -7,8 +7,12 @@ var blockElements = [
   $("#hour-9"),
   $("#hour-10"),
   $("#hour-11"),
-  
-
+  $("#hour-12"),
+  $("#hour-1"),
+  $("#hour-2"),
+  $("#hour-3"),
+  $("#hour-4"),
+  $("#hour-5"),
 ];
 
 
@@ -40,6 +44,7 @@ $(document).ready(function () {
   //A simple if statement will do. If time is greater than 12, ...
   
 
+  
 
 
 
