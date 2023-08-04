@@ -6,18 +6,50 @@
 var blockElements = [
   $("#hour-9"),
   $("#hour-10"),
-  $("#hour-11")
+  $("#hour-11"),
+  
+
 ];
 
 
 
 $(document).ready(function () {
-  currTime = dayjs().$H;
-  console.log ("Current time is " + currTime);
+  
+  setInterval(function(){
+    currTime = dayjs();
+    $("#currentDay").text("Current time is " + currTime.$H + ":" + currTime.$m);
+
+    // loop that checks whether boxes should be set for past, present, or future    
+    for (var i=0; i<9; i++) {
+      if ((currTime.$H)-9 > i) 
+        setPast(i);
+
+      else if ((currTime.$H)-9 == i)
+        setPresent(i);
+
+      else 
+        setFuture(i);
+    }
+
+  },500)
+  
+  //console.log ("Current time is " + currTime);
+  //$("header").append("Current time is " + dayjs().$H + ":" + dayjs().$m);
+
+  //TODO fix formatting on this and update it so it shows AM and PM rather than 24 hours.
+  //A simple if statement will do. If time is greater than 12, ...
+  
 
 
 
-  //fuction for checking whether it's nine
+
+
+  $("button").click (function(){
+    //I want to save the button's sibling text to the key of the box class
+    console.log ("Button was pressed");
+    localStorage.setItem(    $(this).parent().attr("id")   ,    $(this).siblings("textArea").val());
+  })
+
   
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -25,6 +57,9 @@ $(document).ready(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+
+  //I can probably use the parent function to check which button has been clicked.
+  
   //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -56,6 +91,8 @@ $(function checkHour (blockTime) {
     
 })
 
+
+//functions that change class to match current time
 function setPast (hourIndex) {
   if ($(blockElements[hourIndex]).hasClass("past") == false) {
 
